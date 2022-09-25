@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
+body {
+  text-align: center;
+  font-family: sans-serif;
+  background-image: url("https://source.unsplash.com/1600x800/?vikings");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+.header{
+font-size: xx-large;
+}
+
+.header-details {
+  font-family: 'Bungee Spice', cursive;
+  margin-top: 10px;
+  margin-left: 80px;
+  margin-right: 80px;
+  justify-content: center;
+  background-color: black;
+  border-radius: 15px;
+  color: rgb(212, 201, 201);
+  opacity: 0.7;
+}
+
+.shows-display {
+  margin-left: 20px;
+  margin-right: 20px;
+}
