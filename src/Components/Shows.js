@@ -37,38 +37,40 @@ export default function Shows() {
   const optimisedVesion = useCallback(debounce(showsName), []);
 
   return (
-    <div className="shows">
-      <div className="input-box-details"> {shows === '' ? 'Enter Show Name Below' : ''}</div>
-      <form class="d-flex" role="search">
-        <input class="form-control me-1" type="search" onChange={optimisedVesion} placeholder="eg: friends.. Search" aria-label="Search" />
-      </form>
-      <div className="Shows  my-3">
+    <>
+      <div className="container my-2">
+        <div className="input-box-details"> {shows === '' ? 'Enter Show Name Below' : ''}</div>
+        <form class="d-flex" role="search">
+          <input class="form-control me-1" type="search" onChange={optimisedVesion} placeholder="eg: friends.. Search" aria-label="Search" />
+        </form>
+      </div>
+
+      <div className="row row-cols-1 row-cols-md-4 g-4 my-3 main">
         {data.length > 0 &&
           data.map((item) => {
             const regex = /(<([^>]+)>)/ig;
-
             return (
-              <main className="main my-2">
-                <div className="show" onClick={() => window.open(`${item.show.url !== null ? item.show.url : ''}`, "_blank")} key={item.show.id}>
-                  <img className="image"
+              <div className="col" onClick={() => window.open(`${item.show.url !== null ? item.show.url : ''}`, "_blank")} key={item.show.id}>
+                <div className="card show">
+                  <img
                     src={item.show.image !== null ? item.show.image.medium : ""}
                     alt-text={item.show.name}
                   />
                   <div className="details">
-                    <h3 className="show-name">{item.show.name}({item.show.language})</h3>
+                    <h5 className="name">{item.show.name}({item.show.language})</h5>
                     <span className="rating">⭐
                       {item.show.rating.average !== null ? item.show.rating.average : "0.0"}</span>
-                  </div>
-                  <div className="summary">
-                    <h3>Summary</h3>
-                    {item.show.summary !== null ? item.show.summary.replace(regex, '') : ''}
+                    <p className="summary">
+                      <h3>Summary</h3>
+                      {item.show.summary !== null ? item.show.summary.replace(regex, '') : ''}</p>
                   </div>
                 </div>
-              </main>
-            );
-          })
+              </div>
+            )
+          }
+          )
         }
       </div>
-    </div>
+    </>
   );
 }

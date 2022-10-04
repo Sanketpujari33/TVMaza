@@ -114,10 +114,11 @@ header {
 
 .Shows {
     display: grid;
+    
     /* grid-template-columns: auto auto auto auto auto; */
 }
-
-@media screen and (min-width: 576px) {
+/* ----------------------------responsive website layout start ---------------------------*/
+@media screen and (min-width: 372px) {
     .Shows {
         display: grid;
         grid-template-columns: auto auto;

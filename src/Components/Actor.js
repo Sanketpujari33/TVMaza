@@ -72,47 +72,48 @@ export default function Actor() {
     const handleInput = useCallback(debounce(actorsName), [])
 
     return (
-        <div className="shows">
-            <div className="input-box-details"> {actors === '' ? 'Enter Show Name by Actor Below' : ''}</div>
+        <>
+            <div className="container my-2">
+                <div className="input-box-details my-4"> {actors === '' ? 'Enter Show Name by Actor Below' : ''}</div>
                 <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" onChange={handleInput} placeholder="eg: Akon.. Search" aria-label="Search" 
-                        
+                    <input class="form-control me-2" type="search" onChange={handleInput} placeholder="eg: Akon.. Search" aria-label="Search"
                     />
                 </form>
-            <div className="Shows my-3">
+            </div>
+
+            <div className="row row-cols-1 row-cols-md-4 g-4 my-3 main">
                 {data2.length > 0 &&
                     data2.map((item) => {
                         const regex = /(<([^>]+)>)/ig;
                         return (
-                            <main className="main my-2">
-                                <div className="show" onClick={() => window.open(`${item._embedded.show.url !== null ? item._embedded.show.url : ''}`, "_blank")}>
-                                    <img className="image" onHover={item._embedded.show.summary}
+                            <div className="col" onClick={() => window.open(`${item._embedded.show.url !== null ? item._embedded.show.url : ''}`, "_blank")}>
+                                <div className="card show">
+                                    <img onHover={item._embedded.show.summary}
                                         src={
                                             item._embedded.show.image.medium !== null
                                                 ? item._embedded.show.image.medium
                                                 : ""
                                         }
-                                        alt-text="No image available"
-                                    />
+                                        alt-text="No image available" />
                                     <div className="details">
-                                        <h3 className="name">{item._embedded.show.name}({item._embedded.show.language})</h3>
+                                        <h5 className="name">{item._embedded.show.name}({item._embedded.show.language})</h5>
                                         <span className="rating">⭐
                                             {item._embedded.show.rating.average !== null
                                                 ? item._embedded.show.rating.average
                                                 : "0.0"}
                                         </span>
-                                    </div>
-                                    <div className="summary">
-                                        <h3 >Summary:- </h3>
-                                        {item._embedded.show.summary.replace(regex, '')}
+                                        <p className="summary">
+                                            <h3 >Summary:- </h3>
+                                            {item._embedded.show.summary.replace(regex, '')}</p>
                                     </div>
                                 </div>
-                            </main>
-                        );
-                    })
+                            </div>
+                        )
+                    }
+                    )
                 }
             </div>
-        </div>
+        </>
     );
 }
 
