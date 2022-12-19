@@ -4,7 +4,7 @@
 
 #### This Web Site is for Checking Web Series Reviews
 
-#### [View My Work here -&gt;](https://sachin-sho.vercel.app/)
+#### [View My Work here -&gt;](https://tvmaza.netlify.app/)
 
 ## Technologies Used
 
